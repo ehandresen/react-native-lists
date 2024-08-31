@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import List from './components/List';
+import FlatListComponent from './components/FlatListComponent';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <List />
+      <FlatListComponent />
     </View>
   );
 }
