@@ -1,12 +1,10 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import List from './components/List';
-import FlatListComponent from './components/FlatListComponent';
-import Touchable from './components/Touchable';
+import { StyleSheet, View } from 'react-native';
+import Header from './todoApp/Header';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Touchable />
+      <Header />
     </View>
   );
 }
