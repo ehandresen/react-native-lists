@@ -1,6 +1,7 @@
 import { FlatList, StyleSheet, View } from 'react-native';
 import Header from './todoApp/Header';
 import TodoItem from './todoApp/TodoItem';
+import AddTodo from './todoApp/AddTodo';
 import { useState } from 'react';
 
 export type Todo = {
@@ -17,13 +18,14 @@ export default function App() {
 
   const pressHandler = (key: string): void => {
     setTodos((prevTodos) => {
-      return prevTodos.filter((todo) => todo.key != key);
+      return prevTodos.filter((todo) => todo.key != key); // returning a new array
     });
   };
 
   return (
     <View style={styles.container}>
       <Header />
+      <AddTodo />
       <View style={styles.content}>
         <View style={styles.list}>
           <FlatList
@@ -44,11 +46,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   content: {
-    paddingLeft: 20,
+    paddingHorizontal: 20,
     paddingTop: 20,
   },
   list: {
-    paddingLeft: 20,
+    paddingHorizontal: 20,
     paddingTop: 20,
   },
 });

@@ -16,8 +16,12 @@ const TodoItem = ({ item, pressHandler }: TodoItemProps) => {
 
 const styles = StyleSheet.create({
   todo: {
-    fontSize: 18,
-    marginBottom: 5,
+    padding: 16,
+    marginTop: 16,
+    borderColor: '#bbb',
+    borderWidth: 1,
+    borderStyle: 'dashed',
+    borderRadius: 10,
   },
 });
 
