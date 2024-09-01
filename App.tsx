@@ -22,11 +22,20 @@ export default function App() {
     });
   };
 
+  const addTodo = (todoText: string): void => {
+    const newTodo: Todo = {
+      text: todoText,
+      key: (todos.length + 1).toString(),
+    };
+
+    setTodos([...todos, newTodo]);
+  };
+
   return (
     <View style={styles.container}>
       <Header />
-      <AddTodo />
       <View style={styles.content}>
+        <AddTodo addTodo={addTodo} />
         <View style={styles.list}>
           <FlatList
             data={todos}

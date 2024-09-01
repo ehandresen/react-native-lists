@@ -1,10 +1,15 @@
-import { useState } from 'react';
-import { StyleSheet, TextInput, View } from 'react-native';
+import { SetStateAction, useState } from 'react';
+import { StyleSheet, TextInput, View, Button } from 'react-native';
+import { Todo } from '../App';
 
-const AddTodo = () => {
+type AddTodoProps = {
+  addTodo: (todoText: string) => void;
+};
+
+const AddTodo = ({ addTodo }: AddTodoProps) => {
   const [text, setText] = useState('');
 
-  const changeHandler = (val) => {
+  const changeHandler = (val: SetStateAction<string>) => {
     setText(val);
   };
 
@@ -15,6 +20,7 @@ const AddTodo = () => {
         placeholder="new todo..."
         onChangeText={changeHandler}
       />
+      <Button onPress={() => addTodo(text)} title="ADD TODO" color="coral" />
     </View>
   );
 };
