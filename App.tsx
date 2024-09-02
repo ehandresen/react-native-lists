@@ -43,21 +43,21 @@ export default function App() {
   };
 
   return (
-    <Sandbox />
-    // {<View style={styles.container}>
-    //   <Header />
-    //   <View style={styles.content}>
-    //     <AddTodo addTodo={addTodo} />
-    //     <View style={styles.list}>
-    //       <FlatList
-    //         data={todos}
-    //         renderItem={({ item }) => (
-    //           <TodoItem item={item} pressHandler={pressHandler} />
-    //         )}
-    //       />
-    //     </View>
-    //   </View>
-    // </View>}
+    // <Sandbox />
+    <View style={styles.container}>
+      <Header />
+      <View style={styles.content}>
+        <AddTodo addTodo={addTodo} />
+        <View style={styles.list}>
+          <FlatList
+            data={todos}
+            renderItem={({ item }) => (
+              <TodoItem item={item} pressHandler={pressHandler} />
+            )}
+          />
+        </View>
+      </View>
+    </View>
   );
 }
 
@@ -67,11 +67,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   content: {
-    paddingHorizontal: 20,
-    paddingTop: 20,
+    flex: 1,
+    padding: 40,
   },
   list: {
-    paddingHorizontal: 20,
-    paddingTop: 20,
+    flex: 1,
+    marginTop: 20,
   },
 });
