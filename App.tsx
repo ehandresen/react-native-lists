@@ -1,7 +1,8 @@
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, View, Alert } from 'react-native';
 import Header from './todoApp/Header';
 import TodoItem from './todoApp/TodoItem';
 import AddTodo from './todoApp/AddTodo';
+import Sandbox from './components/sandbox';
 import { useState } from 'react';
 
 export type Todo = {
@@ -17,35 +18,46 @@ export default function App() {
   ]);
 
   const pressHandler = (key: string): void => {
-    setTodos((prevTodos) => {
-      return prevTodos.filter((todo) => todo.key != key); // returning a new array
-    });
+    setTodos(
+      (prevTodos) => prevTodos.filter((todo) => todo.key != key) // returning a new array
+    );
   };
 
   const addTodo = (todoText: string): void => {
+    if (!todoText) {
+      Alert.alert('oops!', 'please add a todo', [
+        {
+          text: 'understood',
+          onPress: () => console.log('alert closed'),
+        },
+      ]);
+      return;
+    }
+
     const newTodo: Todo = {
       text: todoText,
-      key: (todos.length + 1).toString(),
+      key: Math.random().toString(),
     };
 
-    setTodos([...todos, newTodo]);
+    setTodos((prevTodos) => [newTodo, ...prevTodos]);
   };
 
   return (
-    <View style={styles.container}>
-      <Header />
-      <View style={styles.content}>
-        <AddTodo addTodo={addTodo} />
-        <View style={styles.list}>
-          <FlatList
-            data={todos}
-            renderItem={({ item }) => (
-              <TodoItem item={item} pressHandler={pressHandler} />
-            )}
-          />
-        </View>
-      </View>
-    </View>
+    <Sandbox />
+    // {<View style={styles.container}>
+    //   <Header />
+    //   <View style={styles.content}>
+    //     <AddTodo addTodo={addTodo} />
+    //     <View style={styles.list}>
+    //       <FlatList
+    //         data={todos}
+    //         renderItem={({ item }) => (
+    //           <TodoItem item={item} pressHandler={pressHandler} />
+    //         )}
+    //       />
+    //     </View>
+    //   </View>
+    // </View>}
   );
 }
 

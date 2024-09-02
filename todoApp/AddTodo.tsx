@@ -18,6 +18,7 @@ const AddTodo = ({ addTodo }: AddTodoProps) => {
       <TextInput
         style={styles.input}
         placeholder="new todo..."
+        keyboardType="default"
         onChangeText={changeHandler}
       />
       <Button onPress={() => addTodo(text)} title="ADD TODO" color="coral" />
